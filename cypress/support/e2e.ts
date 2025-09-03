@@ -15,3 +15,9 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands.js'
+
+// Runtime import (loads the command)
+import '../../dist/index.js'
+
+// Type-only import to ensure Chainable augmentation is picked up in test files
+import type {} from '../../dist/index'

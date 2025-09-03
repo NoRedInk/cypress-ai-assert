@@ -9,8 +9,9 @@
     "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc",
+    "demo:open": "npm run build && cypress open",
+    "demo:run": "npm run build && cypress run"
   },
   "keywords": ["cypress", "llm", "testing", "ai"],
   "author": "Alexander Roy",
