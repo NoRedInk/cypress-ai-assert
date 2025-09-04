@@ -21,3 +21,5 @@ import '../../dist/index.js'
 
 // Type-only import to ensure Chainable augmentation is picked up in test files
 import type {} from '../../dist/index'
+
+/// <reference path="../../cypress-ai-assert/dist/index.d.ts" />

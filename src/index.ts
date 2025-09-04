@@ -1,5 +1,7 @@
 export {}
 
+/// <reference path="./index.d.ts" />
+
 import { getProvider } from './providers.js'
 import './builtinProviders.js'
 
@@ -26,7 +28,7 @@ declare global {
 type AiAssertOptions = {
   debug?: boolean
   provider?: string
-}
+} & Record<string, any>
 
 function aiAssert(
   subject: JQuery<HTMLElement>,

@@ -17,5 +17,5 @@ declare global {
 type AiAssertOptions = {
     debug?: boolean;
     provider?: string;
-};
+} & Record<string, any>;
 //# sourceMappingURL=index.d.ts.map

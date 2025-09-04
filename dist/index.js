@@ -1,4 +1,5 @@
 export {};
+/// <reference path="./index.d.ts" />
 import { getProvider } from './providers.js';
 import './builtinProviders.js';
 Cypress.Commands.add('aiAssert', { prevSubject: true }, aiAssert);
