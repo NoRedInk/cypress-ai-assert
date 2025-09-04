@@ -11,9 +11,9 @@ declare global {
       /**
        * Uses an LLM's API to validate content based on a given instruction.
        * @example
-       * cy.get('#word-lookup-container').aiAssert('Check if the text is in Spanish')
-       * cy.get('#word-lookup-container').aiAssert('Check if the text is in Spanish', { debug: true })
-       * cy.get('#word-lookup-container').aiAssert('Check if the text is in Spanish', { provider: 'openai' })
+       * cy.get('#definition-container').aiAssert('Check if the text is in Spanish')
+       * cy.get('#sponsored-content').aiAssert('Should contain sponsored ads with links to external sites', { debug: true })
+       * cy.get('body').aiAssert('The page should show a comparison of the free, Premium, and Enterprise versions', { provider: 'openai' })
        */
       aiAssert(
         instruction: string,
