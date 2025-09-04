@@ -10,7 +10,7 @@ const systemPrompts = {
 
 const anthropic: AIProvider = {
   name: 'anthropic',
-  request: (instruction, content, { debug = false }) => {
+  request: (instruction, content, { debug = false } = {}) => {
     return cy
       .request({
         method: 'POST',
@@ -35,7 +35,7 @@ const anthropic: AIProvider = {
 
 const openai: AIProvider = {
   name: 'openai',
-  request: (instruction, content, { debug = false }) => {
+  request: (instruction, content, { debug = false } = {}) => {
     return cy
       .request({
         method: 'POST',
@@ -60,5 +60,32 @@ const openai: AIProvider = {
   }
 }
 
+const mock: AIProvider = {
+  name: 'mock',
+  request: (
+    instruction,
+    content,
+    { debug = false, force }: { debug?: boolean; force?: 'YES' | 'NO' } = {}
+  ) => {
+    const answer = force ?? 'YES'
+
+    if (debug) {
+      return cy.wrap(
+        [
+          'This is some example debug output',
+          'You should only be seeing it if you passed { debug: true } to the mock provider.',
+          `Step 1: I received the following instruction: "${instruction}"`,
+          `Step 2: Analyzing content: "${content}"`,
+          'Step 3: Reasoning about whether it meets criteria...',
+          `FINAL ANSWER: ${answer}`
+        ].join('\n')
+      ) as Cypress.Chainable<string>
+    }
+
+    return cy.wrap(answer as string)
+  }
+}
+
 registerProvider(anthropic)
 registerProvider(openai)
+registerProvider(mock)

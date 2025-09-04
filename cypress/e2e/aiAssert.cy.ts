@@ -27,3 +27,37 @@ describe('aiAssert (live)', () => {
     )
   })
 })
+
+describe('aiAssert (mock)', () => {
+  beforeEach(() => {
+    cy.document().then((doc) => {
+      doc.body.innerHTML = `<div id="some-element">Hola</div>`
+    })
+  })
+
+  it('passes when mock returns YES', () => {
+    cy.get('#some-element').aiAssert('Should contain text', {
+      provider: 'mock',
+      force: 'YES'
+    })
+  })
+
+  it('fails when mock returns NO', (done) => {
+    cy.on('fail', (err) => {
+      expect(err.message).to.include('Expected Should contain text')
+      done()
+    })
+
+    cy.get('#some-element').aiAssert('Should contain text', {
+      provider: 'mock',
+      force: 'NO'
+    })
+  })
+
+    it('supports debug mode with FINAL ANSWER', () => {
+    cy.get('#some-element').aiAssert(
+      'Should contain text',
+      { provider: 'mock', debug: true, force: 'YES' }
+    )
+  })
+})

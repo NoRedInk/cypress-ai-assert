@@ -39,15 +39,15 @@ function aiAssert(
   const content = subject.text().trim()
 
   provider
-    .request(instruction, content, { debug })
+    .request(instruction, content, options)
     .then((res: string) => {
-      if (debug) { 
+      if (options.debug) { 
         cy.log('DEBUG OUTPUT:\n' + res) 
       } 
       return cy.wrap(res, { log: false })
       .then((answer) => {
       const errorMessage = 'Expected ' + instruction
-      if (debug) {
+      if (options.debug) {
         const finalLine = answer.split('\n').pop()!.trim()
         expect(finalLine).to.match(/^FINAL ANSWER: YES$/, errorMessage)
       } else {

@@ -5,7 +5,7 @@ const systemPrompts = {
 };
 const anthropic = {
     name: 'anthropic',
-    request: (instruction, content, { debug = false }) => {
+    request: (instruction, content, { debug = false } = {}) => {
         return cy
             .request({
             method: 'POST',
@@ -29,7 +29,7 @@ const anthropic = {
 };
 const openai = {
     name: 'openai',
-    request: (instruction, content, { debug = false }) => {
+    request: (instruction, content, { debug = false } = {}) => {
         return cy
             .request({
             method: 'POST',
@@ -53,6 +53,24 @@ const openai = {
             .then((res) => res.body.choices[0].message.content.trim());
     }
 };
+const mock = {
+    name: 'mock',
+    request: (instruction, content, { debug = false, force } = {}) => {
+        const answer = force ?? 'YES';
+        if (debug) {
+            return cy.wrap([
+                'This is some example debug output',
+                'You should only be seeing it if you passed { debug: true } to the mock provider.',
+                `Step 1: I received the following instruction: "${instruction}"`,
+                `Step 2: Analyzing content: "${content}"`,
+                'Step 3: Reasoning about whether it meets criteria...',
+                `FINAL ANSWER: ${answer}`
+            ].join('\n'));
+        }
+        return cy.wrap(answer);
+    }
+};
 registerProvider(anthropic);
 registerProvider(openai);
+registerProvider(mock);
 //# sourceMappingURL=builtinProviders.js.map

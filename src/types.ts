@@ -3,6 +3,9 @@ export interface AIProvider {
   request: (
     instruction: string,
     content: string,
-    options: { debug?: boolean }
+    options?: {
+      debug?: boolean
+      [key: string]: any // allow provider-specific options
+    }
   ) => Cypress.Chainable<string>
 }
