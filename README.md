@@ -102,3 +102,7 @@ cy.get('#some-element').aiAssert('Some assertion', {
 ```
 
 It can also accept the `debug` option and return some fake thinking.
+
+## Contributing
+
+Community contributions are welcome. If you're not sure if your idea would be appropriate for this package, feel free to open an issue describing your change before making a PR.
