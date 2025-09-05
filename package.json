@@ -14,8 +14,8 @@
     "demo:run": "npm run build && cypress run"
   },
   "keywords": ["cypress", "llm", "testing", "ai"],
-  "author": "Alexander Roy",
-  "license": "MIT",
+  "author": "Alexander Roy & NoRedInk",
+  "license": "BSD-3-Clause",
   "devDependencies": {
     "@types/cypress": "^1.1.6",
     "@types/node": "^24.3.0",
