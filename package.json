@@ -1,5 +1,5 @@
 {
-  "name": "cypress-ai-assert",
+  "name": "@noredink/cypress-ai-assert",
   "version": "1.0.0",
   "type": "module",
   "description": "Cypress custom command to validate text with LLMs (Anthropic, OpenAI, etc).",

@@ -1,4 +1,4 @@
-# cypress-ai-assert
+# @noredink/cypress-ai-assert
 
 Make assertions by calling any LLM's API inside tests.
 
@@ -7,19 +7,19 @@ Make assertions by calling any LLM's API inside tests.
 Install using npm:
 
 ```bash
-npm install --save-dev @NoRedInk/cypress-ai-assert
+npm install --save-dev @noredink/cypress-ai-assert
 ```
 
 Require from `commands.js`
 
 ```javascript
-require('@NoRedInk/cypress-ai-assert')
+require('@noredink/cypress-ai-assert')
 ```
 
 Or ES module syntax:
 
 ```javascript
-import '@NoRedInk/cypress-ai-assert'
+import '@noredink/cypress-ai-assert'
 ```
 
 For TypeScript, add to `tsconfig.json`
@@ -27,7 +27,7 @@ For TypeScript, add to `tsconfig.json`
 ```json
 {
   "compilerOptions": {
-    "types": ["cypress", "@NoRedInk/cypress-ai-assert"]
+    "types": ["cypress", "@noredink/cypress-ai-assert"]
   }
 }
 ```
@@ -63,7 +63,7 @@ cy.get('body').aiAssert('The page should show a comparison of the free, Premium,
 Register your own provider
 
 ```
-import { registerProvider } from 'cypress-ai-assert'
+import { registerProvider } from '@noredink/cypress-ai-assert'
 
 // Example: Google Gemini
 registerProvider({
