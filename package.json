@@ -1,6 +1,6 @@
 {
   "name": "@noredink/cypress-ai-assert",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "Cypress custom command to validate text with LLMs (Anthropic, OpenAI, etc).",
   "main": "dist/index.js",
@@ -13,7 +13,12 @@
     "demo:open": "npm run build && cypress open",
     "demo:run": "npm run build && cypress run"
   },
-  "keywords": ["cypress", "llm", "testing", "ai"],
+  "keywords": [
+    "cypress",
+    "llm",
+    "testing",
+    "ai"
+  ],
   "author": "Alexander Roy & NoRedInk",
   "license": "BSD-3-Clause",
   "devDependencies": {
