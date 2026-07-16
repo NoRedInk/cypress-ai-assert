@@ -16,7 +16,7 @@ const anthropic = {
                 'x-api-key': Cypress.env('ANTHROPIC_API_KEY')
             },
             body: {
-                model: 'claude-sonnet-4-5-20250929',
+                model: 'claude-sonnet-5',
                 max_tokens: debug ? 500 : 50,
                 system: debug ? systemPrompts.debug : systemPrompts.standard,
                 messages: [
@@ -39,8 +39,9 @@ const openai = {
                 Authorization: `Bearer ${Cypress.env('OPENAI_API_KEY')}`
             },
             body: {
-                model: 'gpt-4.1-mini',
-                max_tokens: debug ? 500 : 50,
+                model: 'gpt-5.6-luna',
+                max_completion_tokens: debug ? 500 : 50,
+                reasoning_effort: 'none',
                 messages: [
                     {
                         role: 'system',
