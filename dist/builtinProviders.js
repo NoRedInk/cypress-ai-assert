@@ -17,14 +17,24 @@ const anthropic = {
             },
             body: {
                 model: 'claude-sonnet-5',
-                max_tokens: debug ? 500 : 50,
+                max_tokens: debug ? 3000 : 2000,
+                thinking: { type: 'adaptive' },
+                output_config: { effort: 'medium' },
                 system: debug ? systemPrompts.debug : systemPrompts.standard,
                 messages: [
                     { role: 'user', content: `${instruction}\n\nContent:\n${content}` }
                 ]
             }
         })
-            .then((res) => res.body.content[0].text.trim());
+            .then((res) => {
+            const content = res.body.content;
+            const textBlock = content.find((block) => block.type === 'text');
+            if (!textBlock?.text) {
+                throw new Error(`Anthropic response contained no text block (stop_reason: ${res.body.stop_reason}). ` +
+                    'The model may have exhausted max_tokens during thinking — raise max_tokens or lower effort.');
+            }
+            return textBlock.text.trim();
+        });
     }
 };
 const openai = {
