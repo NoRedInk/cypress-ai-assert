@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.1] - 2026-07-17
+### Fixed
+- Fixed a bug in default provider where Sonnet could crash due to `thinking` block changing response shape
+### Changed
+- Optimizations and error handling for Sonnet default provider
+
 ## [1.1.0] - 2026-07-16
 ### Changed
 - Updated built-in Anthropic model to Claude Sonnet 5 (`claude-sonnet-5`)
